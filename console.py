@@ -122,34 +122,42 @@ class HBNBCommand(cmd.Cmd):
         elif args_list[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
+        
+        try : 
+            for i in args_list[1:]:
+                new_instance = HBNBCommand.classes[args_list[0]]()
+                print("peut etre la :ppppp")
+                
+                print ("je suis la !!!!")
+                for kv in args_list[1:]:
+                    key, value= kv.split('=')
+                    kv = kv.strip()
 
-        for i in args_list[1:]:
+                    print(type(value))
+                    if value[0] == '"' and value[-1] == '"':
+                        value = value[1:-1].replace('_', ' ').replace('\\"', '"')
+                    elif "." in value:
+                        try:
+                            value = float(value)
+                        except ValueError:
+                            continue                    
+                    else:
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            continue
+            print (key, value)
+            setattr(new_instance, key, value)
+            storage.save()
+            print(new_instance.id)
+            storage.save()
+        except UnboundLocalError:
             new_instance = HBNBCommand.classes[args_list[0]]()
-            print("peut etre la :ppppp")
+            storage.save()
+            print(new_instance.id)
+            storage.save()
             
-            print ("je suis la !!!!")
-            for kv in args_list[1:]:
-                key, value= kv.split('=')
-                kv = kv.strip()
-
-                print(type(value))
-                if value[0] == '"' and value[-1] == '"':
-                    value = value[1:-1].replace('_', ' ').replace('\\"', '"')
-                elif "." in value:
-                    try:
-                        value = float(value)
-                    except ValueError:
-                        continue                    
-                else:
-                    try:
-                        value = int(value)
-                    except ValueError:
-                        continue
-        print (key, value)
-        setattr(new_instance, key, value)
-        storage.save()
-        print(new_instance.id)
-        storage.save()
+        
 
     """"ANCIEN Do_Create"""
     """ def do_create(self, args):
