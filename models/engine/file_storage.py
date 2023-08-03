@@ -48,3 +48,11 @@ class FileStorage:
                         self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+    def delete(self, obj=None):
+        with open(FileStorage.__file_path, "r") as file:
+            data = json.load(file)
+        
+        Index_delete = None
+        for i, value in enumerate(data):
+            if value[] == obj
