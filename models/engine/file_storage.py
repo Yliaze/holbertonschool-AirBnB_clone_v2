@@ -53,13 +53,8 @@ class FileStorage:
 
     def delete(self, obj=None):
         '''delete fonction'''
-        with open(FileStorage.__file_path, "r") as file:
-            data = json.load(file)
-
-        if obj is not None:
-            key = "{}.{}".format(obj.__class__.__name__, obj.id)
-            if key in data:
-                del data[key]
-        
-        with open(FileStorage.__file_path, "w") as file:
-            json.dump(data, file)
+        if obj is None:
+            return
+        key = obj.to_dict()['__class__'] + '.' + obj.id
+        del FileStorage.__objects[key]
+        FileStorage.save(self)
