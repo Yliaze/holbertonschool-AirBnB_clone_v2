@@ -12,7 +12,6 @@ class FileStorage:
         """Returns a dictionary of models currently in storage"""
         if cls is not None:
             data = cls()
-            print(data)
         return FileStorage.__objects
 
     def new(self, obj):
@@ -53,6 +52,7 @@ class FileStorage:
             pass
 
     def delete(self, obj=None):
+        '''delete fonction'''
         with open(FileStorage.__file_path, "r") as file:
             data = json.load(file)
 
