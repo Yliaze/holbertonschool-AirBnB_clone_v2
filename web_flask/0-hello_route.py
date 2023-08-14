@@ -7,6 +7,8 @@ app = Flask(__name__)
 
 """Decorator that define a route"""
 @app.route("/", strict_slashes=False)
+
+
 def hello_HBNB():
     return "Hello HBNB!"
 
