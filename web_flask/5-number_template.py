@@ -51,7 +51,6 @@ def display_HTMLpageint(n):
         return render_template("5-number.html")
 
 
-
 """Start the Flask application when the script is run directly"""
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
