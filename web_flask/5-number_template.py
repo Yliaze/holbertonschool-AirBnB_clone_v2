@@ -48,7 +48,7 @@ def display_number(n):
 def display_HTMLpageint(n):
     """display a HTML page only if n is an integer"""
     if type(n) is int:
-        return render_template("5-number.html")
+        return render_template("5-number.html", n=n)
 
 
 """Start the Flask application when the script is run directly"""
