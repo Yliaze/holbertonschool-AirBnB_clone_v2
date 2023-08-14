@@ -5,12 +5,12 @@ from flask import Flask
 """Create an instance of the Flask application"""
 app = Flask(__name__)
 
-"""Decorator that define a route"""
+
 @app.route("/", strict_slashes=False)
-
-
 def hello_HBNB():
+    """Return Hello HBNB!"""
     return "Hello HBNB!"
+
 
 """Start the Flask application when the script is run directly"""
 if __name__ == "__main__":
