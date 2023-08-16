@@ -80,7 +80,7 @@ def display_states():
 def state_with_id(id):
     """function called with /states/<id> route that display a
     HTML page with the list of City objects linked to the State
-    if a State object is found with this id ("Not found!")"""
+    if a State object is found with this id (else: "Not found!")"""
     list_states = storage.all("State")
     return render_template("9-states.html", states=list_states, id=id)
 
