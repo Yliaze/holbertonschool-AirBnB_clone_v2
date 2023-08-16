@@ -65,7 +65,6 @@ def cities_list():
     """function called with /cities_by_states route that display a
     HTML page with the list of all cities by states"""
     list_states = storage.all("State")
-    list_cities = storage.all("City")
     return render_template("8-cities_by_states.html", states=list_states)
 
 
